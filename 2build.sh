@@ -22,7 +22,7 @@ git add -u
 git commit -m "${tagNum}"
 git push origin main1
 git tag $gitTagName
-git push origin $gitTagName
+git push -u origin $gitTagName
 
 echo "kubectl set image deployment/${deployName} ${containersName}=tian0506/testauto:version-${tagNum}"
 exit 0
