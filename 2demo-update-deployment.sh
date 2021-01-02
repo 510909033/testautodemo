@@ -8,6 +8,7 @@ deploymentName=$1
 tagname=$2
 port=$3
 ok=$4
+containersName=""
 echo "deploymentName=${deploymentName}, tagname=${tagname}, port=${port}"
 if [[ $ok != "ok" ]];then
         echo "debug"
@@ -15,7 +16,7 @@ if [[ $ok != "ok" ]];then
 fi
 
 
-exec="kubectl set image deployment/demohubserver2 demohub=tian0506/demohub:${tagname}"
+exec="kubectl set image deployment/${deploymentName} demohub=tian0506/demohub:${tagname}"
 echo $exec
 $exec
 

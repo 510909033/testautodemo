@@ -1,9 +1,15 @@
 #!/bin/bash
 
 #set -e
-# 自动构建镜像 和 k8s
+# 自动push到github
 
-# sh build.sh 6.65
+# sh 2build.sh 6.65
+
+
+git add -u
+git commit -m "${tagNum}"
+git push origin main
+exit 0
 
 imageName="testauto"
 deployName="autodemo1"
