@@ -4,13 +4,6 @@
 # 自动push到github
 
 # sh 2build.sh 6.65
-
-
-git add -u
-git commit -m "${tagNum}"
-git push origin main
-exit 0
-
 imageName="testauto"
 deployName="autodemo1"
 containersName="testauto"
@@ -20,6 +13,19 @@ if [[ $tagNum == "" ]];then
 	echo "eg: sh build.sh 5.0"
 	exit 1
 fi
+
+echo $tagNum > version.txt
+
+git add -u
+git commit -m "${tagNum}"
+git push origin main
+git tag $tagNum
+git push origin $tagNum
+
+echo "kubectl set image deployment/${deployName} ${containersName}=tian0506/testauto:version-${tagNum}"
+exit 0
+
+
 
 passwd="=yBFdT58?AXGDa&"
 echo $tagNum > version.txt
