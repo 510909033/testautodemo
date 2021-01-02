@@ -9,6 +9,7 @@ deployName="autodemo1"
 containersName="testauto"
 
 tagNum=$1
+gitTagName="v${tagNum}"
 if [[ $tagNum == "" ]];then
 	echo "eg: sh build.sh 5.0"
 	exit 1
@@ -19,8 +20,8 @@ echo $tagNum > version.txt
 git add -u
 git commit -m "${tagNum}"
 git push origin main
-git tag $tagNum
-git push origin $tagNum
+git tag $gitTagName
+git push origin $gitTagName
 
 echo "kubectl set image deployment/${deployName} ${containersName}=tian0506/testauto:version-${tagNum}"
 exit 0
