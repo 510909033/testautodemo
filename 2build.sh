@@ -20,7 +20,7 @@ echo $tagNum > version.txt
 
 git add -u
 git commit -m "${tagNum}"
-git push origin main
+git push origin main1
 git tag $gitTagName
 git push origin $gitTagName
 
